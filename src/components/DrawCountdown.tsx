@@ -71,14 +71,14 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
   if (isDrawReady) {
     if (variant === 'compact') {
       return (
-        <div className="neo-card-yellow text-center py-3 animate-pulse">
+        <div className="neo-card-yellow text-center py-3 ">
           <p className="font-display font-bold text-lg">Draw available!</p>
         </div>
       )
     }
 
     return (
-      <div className="neo-card-yellow text-center py-6 relative overflow-hidden animate-pulse">
+      <div className="neo-card-yellow text-center py-6 relative overflow-hidden ">
         <Image
           src="/images/lottyRuleta.webp"
           alt=""
@@ -96,7 +96,7 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
 
   if (variant === 'compact') {
     return (
-      <div className={`neo-card-yellow text-center py-3 ${isUrgent ? 'animate-pulse' : ''}`}>
+      <div className={`neo-card-yellow text-center py-3 ${isUrgent ? '' : ''}`}>
         <p className="text-xs font-display uppercase text-text-main/60 mb-1">Next Draw</p>
         <p className="font-display font-bold text-lg">
           {timeLeft.days > 0 && <span>{timeLeft.days}d </span>}
@@ -109,7 +109,7 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
   }
 
   return (
-    <div className={`neo-card-yellow text-center py-6 relative overflow-hidden ${isUrgent ? 'animate-pulse' : ''}`}>
+    <div className={`neo-card-yellow text-center py-6 relative overflow-hidden ${isUrgent ? '' : ''}`}>
       <Image
         src="/images/lottyRuleta.webp"
         alt=""
