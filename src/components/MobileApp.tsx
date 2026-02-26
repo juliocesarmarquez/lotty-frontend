@@ -96,24 +96,24 @@ export default function MobileApp() {
   return (
     <div className="min-h-screen bg-cream max-w-lg mx-auto">
       {/* Header */}
-      <header className="p-4 flex items-center justify-between">
-        <div className="flex items-center gap-[72px]">
-          <Image
-            src="/images/lottyName.png"
-            alt="Lotty"
-            width={120}
-            height={48}
-          />
-          <Image
-            src="/images/logoLotty.png"
-            alt="Lotty"
-            width={128}
-            height={128}
-            className="rounded-lg"
-          />
-        </div>
-        <div className="text-xs font-mono text-text-main/50">
-          {activeAddress?.slice(0, 6)}...{activeAddress?.slice(-4)}
+      <header className="sticky top-0 z-10 p-4 flex items-center justify-between bg-cream/95 backdrop-blur-sm border-b border-border-black/10">
+        <Image
+          src="/images/lottyBanner.webp"
+          alt="Lotty"
+          width={120}
+          height={48}
+          className="h-10 w-auto"
+        />
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono text-text-main/70 bg-card-white/80 border border-border-black/20 rounded-lg px-2.5 py-1.5 shadow-neo-sm">
+            {activeAddress ? (
+              <>
+                {activeAddress.slice(0, 6)}…{activeAddress.slice(-4)}
+              </>
+            ) : (
+              <span className="text-text-main/50">Wallet sin conectar</span>
+            )}
+          </span>
         </div>
       </header>
 
