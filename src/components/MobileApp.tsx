@@ -135,6 +135,9 @@ export default function MobileApp() {
             onStartDraw={contracts.startDraw}
             onCompleteRNG={contracts.completeRNG}
             onCompleteDraw={contracts.completeDraw}
+            currentDays={currentDays}
+            currentAPY={currentAPY}
+            nextMilestone={nextMilestone}
           />
         )}
 

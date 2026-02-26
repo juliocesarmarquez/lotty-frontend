@@ -84,7 +84,7 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
           alt=""
           width={64}
           height={64}
-          className="absolute -right-2 -top-2 opacity-30"
+          className="absolute -right-2 -top-2 opacity-100"
         />
         <p className="text-sm font-display uppercase text-text-main/60">Weekly Draw</p>
         <p className="font-display text-3xl font-bold mt-2">Draw available!</p>
@@ -115,7 +115,7 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
         alt=""
         width={64}
         height={64}
-        className="absolute -right-2 -top-2 opacity-30"
+        className="absolute -right-2 -top-2 opacity-100"
       />
       <p className="text-sm font-display uppercase text-text-main/60">Next Draw In</p>
       <div className="flex items-center justify-center gap-3 mt-3">

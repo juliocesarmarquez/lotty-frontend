@@ -3,6 +3,7 @@
 import StatCard from '@/components/StatCard'
 import DrawCountdown from '@/components/DrawCountdown'
 import DrawManager from '@/components/DrawManager'
+import ProgressLevel from '@/components/ProgressLevel'
 import { formatUSDC } from '@/lib/constants'
 
 interface PoolInformationProps {
@@ -18,6 +19,9 @@ interface PoolInformationProps {
   onStartDraw?: (onProgress?: (step: string) => void) => Promise<void>
   onCompleteRNG?: (onProgress?: (step: string) => void) => Promise<void>
   onCompleteDraw?: (onProgress?: (step: string) => void) => Promise<void>
+  currentDays: number
+  currentAPY: number
+  nextMilestone: { days: number; apy: number } | null
 }
 
 export default function PoolInformation({
@@ -33,6 +37,9 @@ export default function PoolInformation({
   onStartDraw,
   onCompleteRNG,
   onCompleteDraw,
+  currentDays,
+  currentAPY,
+  nextMilestone,
 }: PoolInformationProps) {
   return (
     <div className="space-y-4 pb-24">
@@ -46,6 +53,12 @@ export default function PoolInformation({
       </div>
 
       <DrawCountdown timeUntilDraw={timeUntilDraw} />
+
+      <ProgressLevel
+        currentDays={currentDays}
+        currentAPY={currentAPY}
+        nextMilestone={nextMilestone}
+      />
 
       {(canDraw || isDrawPending) && onStartDraw && onCompleteRNG && onCompleteDraw && (
         <DrawManager
