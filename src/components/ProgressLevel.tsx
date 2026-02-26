@@ -23,11 +23,9 @@ export default function ProgressLevel({ currentDays, currentAPY, nextMilestone }
         className="absolute top-0 right-0"
       />
       <div className="flex items-center gap-3 mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-16 h-16 bg-card-white border-3 border-border-black rounded-full flex flex-col items-center justify-center">
-            <span className="font-display font-bold text-lg">{currentDays}d</span>
-          </div>
-          <span className="text-2xl">🔥</span>
+        <div className="w-20 h-14 bg-card-white border-3 border-border-black rounded-full flex items-center justify-center gap-1.5">
+          <span className="font-display font-bold text-lg">{currentDays}d</span>
+          <span className="text-xl leading-none">🔥</span>
         </div>
         <div>
           <p className="text-xs font-display uppercase text-text-main/60">CURRENT</p>
@@ -38,17 +36,12 @@ export default function ProgressLevel({ currentDays, currentAPY, nextMilestone }
       </div>
 
       {nextMilestone && (
-        <>
-          <div className="w-full bg-card-white/50 border-2 border-border-black rounded-full h-3 mb-3">
-            <div
-              className="bg-text-main h-full rounded-full transition-all"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <div className="flex justify-between text-xs font-display">
-            <span>NEXT: {nextMilestone.days}d - {nextMilestone.apy}%</span>
-          </div>
-        </>
+        <div className="w-full bg-card-white/50 border-2 border-border-black rounded-full h-3">
+          <div
+            className="bg-text-main h-full rounded-full transition-all"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       )}
     </div>
   )
