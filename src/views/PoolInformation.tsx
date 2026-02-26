@@ -65,7 +65,7 @@ export default function PoolInformation({
           </div>
           <div className="text-right">
             <p className="text-sm font-display text-text-main/60">Aave APY</p>
-            <p className="font-display text-xl font-bold text-green-600">~4%</p>
+            <p className="font-display text-xl font-bold text-green-600">~14%</p>
           </div>
         </div>
         {accumulatedYield > 0n && (

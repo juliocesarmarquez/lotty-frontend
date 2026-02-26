@@ -18,7 +18,7 @@ const tabs: { id: View; icon: typeof BarChart3; label: string }[] = [
 
 export default function BottomNav({ activeView, onViewChange }: BottomNavProps) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-card-white border-t-3 border-border-black">
+    <nav className="fixed bottom-0 left-0 right-0 bg-card-white border-t border-border-black/30">
       <div className="max-w-lg mx-auto flex">
         {tabs.map(({ id, icon: Icon, label }) => (
           <button

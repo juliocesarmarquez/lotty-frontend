@@ -96,16 +96,18 @@ export default function MobileApp() {
   return (
     <div className="min-h-screen bg-cream max-w-lg mx-auto">
       {/* Header */}
-      <header className="sticky top-0 z-10 p-4 flex items-center justify-between bg-cream/95 backdrop-blur-sm border-b border-border-black/10">
-        <Image
-          src="/images/lottyBanner.webp"
-          alt="Lotty"
-          width={120}
-          height={48}
-          className="h-10 w-auto"
-        />
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono text-text-main/70 bg-card-white/80 border border-border-black/20 rounded-lg px-2.5 py-1.5 shadow-neo-sm">
+      <header className="sticky top-0 z-10 h-[60px] px-4 flex items-center justify-between bg-cream/95 backdrop-blur-sm border-b border-border-black/10">
+        <div className="flex h-10 items-center shrink-0">
+          <Image
+            src="/images/lottyBanner.webp"
+            alt="Lotty"
+            width={120}
+            height={48}
+            className="h-10 w-auto block"
+          />
+        </div>
+        <div className="flex h-10 items-center justify-end gap-2 shrink-0">
+          <span className="text-xs font-mono leading-none text-text-main/70 bg-card-white/80 border border-border-black/20 rounded-lg px-2.5 py-1.5 shadow-neo-sm inline-flex items-center">
             {activeAddress ? (
               <>
                 {activeAddress.slice(0, 6)}…{activeAddress.slice(-4)}
@@ -118,7 +120,7 @@ export default function MobileApp() {
       </header>
 
       {/* Content */}
-      <main className="px-4">
+      <main className="px-4 pt-4">
         {activeView === 'pool' && (
           <PoolInformation
             totalDeposits={contracts.poolStats?.totalDeposits ?? 0n}
