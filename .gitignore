@@ -11,6 +11,9 @@ out/
 .env.test.local
 .env.production.local
 
+# turbo cache
+.turbo/
+
 # misc
 .DS_Store
 *.pem
