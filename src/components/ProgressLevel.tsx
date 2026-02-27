@@ -23,7 +23,7 @@ export default function ProgressLevel({ currentDays, currentAPY, nextMilestone }
         className="absolute top-0 right-0"
       />
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-20 h-14 bg-card-white border-3 border-border-black rounded-full flex items-center justify-center gap-1.5">
+        <div className="w-20 h-14 bg-card-white border-3 border-border-black rounded-full flex items-center justify-center gap-1.5 shadow-neo">
           <span className="font-display font-bold text-lg">{currentDays}d</span>
           <span className="text-xl leading-none">🔥</span>
         </div>
