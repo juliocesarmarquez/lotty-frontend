@@ -1,0 +1,149 @@
+{
+  "layout": {
+    "title": "Lotty - No-Loss Lottery",
+    "description": "Win prizes without losing your deposit",
+    "appAlt": "Lotty"
+  },
+  "nav": {
+    "pool": "Pool",
+    "tickets": "Tickets",
+    "streak": "Streak",
+    "profile": "Profile"
+  },
+  "pool": {
+    "stats": "Pool Stats",
+    "totalPool": "Total Pool",
+    "participants": "Participants",
+    "yourTickets": "Your Tickets",
+    "weeklyPrize": "Weekly Prize",
+    "currentPrizePool": "Current Prize Pool",
+    "aaveApy": "Aave APY",
+    "aaveApyValue": "~14%",
+    "yieldForNextDraw": "Yield for next draw"
+  },
+  "tickets": {
+    "title": "Your Tickets",
+    "buy": "Buy",
+    "buyAlt": "Buy tickets",
+    "noTickets": "No tickets yet",
+    "buyToEnter": "Buy tickets to enter the weekly draw",
+    "howItWorks": "How tickets work",
+    "howItWorksDesc": "Each ticket costs {{price}} USDC. Your deposit earns yield in Aave, and the accumulated yield forms the weekly prize pool. You can withdraw your deposit anytime.",
+    "modal": {
+      "title": "Buy Tickets",
+      "ticket": "ticket",
+      "tickets": "tickets",
+      "pricePerTicket": "Price per ticket",
+      "total": "Total",
+      "buyButton_one": "Buy 1 Ticket",
+      "buyButton_other": "Buy {{count}} Tickets",
+      "preparing": "Preparing transaction...",
+      "processing": "Processing..."
+    },
+    "card": {
+      "ticket": "Ticket",
+      "tickets": "Tickets"
+    }
+  },
+  "streak": {
+    "title": "YOUR STREAK",
+    "description": "Buy tickets 3 out of 7 days a week to maintain your streak",
+    "tip1": "buy tickets daily",
+    "tip2": "keep your streak",
+    "tip3": "win bigger prizes",
+    "allRewards": "ALL REWARDS",
+    "daysLabel": "{{count}} days",
+    "apyLabel": "{{apy}}% APY",
+    "weeklySummary": "your weekly summary",
+    "ticketsPurchased": "{{count}}/7 tickets purchased",
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    }
+  },
+  "profile": {
+    "title": "Your Profile",
+    "wallet": "Wallet",
+    "base": "Base",
+    "baseSepolia": "Base Sepolia",
+    "totalBalance": "Total Balance",
+    "usdc": "USDC",
+    "aUsdc": "aUSDC",
+    "accountStats": "Account Stats",
+    "deposited": "Deposited",
+    "activeTickets": "Active Tickets",
+    "streak": "Streak",
+    "currentApy": "Current APY",
+    "days": "days",
+    "accruedRewards": "Accrued Rewards",
+    "noActivePosition": "No active position",
+    "buyToStart": "Buy tickets to start earning rewards",
+    "disconnectWallet": "Disconnect Wallet",
+    "withdrawConfirm": "Are you sure you want to withdraw all your USDC? This will close your position and reset your streak.",
+    "claimConfirm": "Claim your accrued rewards?",
+    "withdrawing": "Withdrawing...",
+    "withdraw": "Withdraw",
+    "claiming": "Claiming...",
+    "claimRewards": "Claim Rewards",
+    "disconnectModal": {
+      "title": "Disconnect Wallet",
+      "body": "Are you sure you want to disconnect your wallet?"
+    }
+  },
+  "draw": {
+    "weeklyDraw": "Weekly Draw",
+    "nextDraw": "Next Draw",
+    "nextDrawIn": "Next Draw In",
+    "drawAvailable": "Draw available!",
+    "days": "days",
+    "hrs": "hrs",
+    "min": "min",
+    "sec": "sec",
+    "manager": {
+      "title": "Draw Manager",
+      "startDraw": "1. Start Draw",
+      "generateRng": "2. Generate Random Number",
+      "completeDraw": "3. Complete Draw & Pick Winner",
+      "starting": "Starting...",
+      "generating": "Generating...",
+      "completing": "Completing...",
+      "hintStart": "Draw is available. Start the draw process.",
+      "hintRng": "Draw started. Generate random number for winner selection.",
+      "hintComplete": "Random number ready. Complete the draw to pick a winner."
+    }
+  },
+  "common": {
+    "cancel": "Cancel",
+    "disconnect": "Disconnect",
+    "copied": "Copied!",
+    "walletNotConnected": "Wallet not connected",
+    "usdc": "USDC"
+  },
+  "toasts": {
+    "purchased_one": "Successfully purchased 1 ticket!",
+    "purchased_other": "Successfully purchased {{count}} tickets!",
+    "withdrawn": "Successfully withdrawn!",
+    "rewardsClaimed": "Rewards claimed successfully!"
+  },
+  "errors": {
+    "timeout": "Transaction timed out. Please check your Lemon wallet and try again.",
+    "cancelled": "Transaction was cancelled.",
+    "failed": "Transaction failed. The contract may have reverted. Check that you have enough USDC (Aave testnet) and try again.",
+    "insufficientBalance": "Insufficient balance. You need at least 10 USDC per ticket.",
+    "alreadyRegistered": "You are already registered. Use \"Add to Position\" instead.",
+    "contractReverted": "Contract reverted. Check your USDC balance and allowances.",
+    "generic": "Transaction failed. Please try again.",
+    "startDraw": "Failed to start draw",
+    "generateRng": "Failed to provide random number",
+    "completeDraw": "Failed to complete draw"
+  },
+  "progress": {
+    "current": "CURRENT",
+    "apy": "{{apy}}% APY"
+  }
+}

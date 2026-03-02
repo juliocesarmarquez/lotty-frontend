@@ -1,0 +1,149 @@
+{
+  "layout": {
+    "title": "Lotty - Lotería Sin Pérdidas",
+    "description": "Gana premios sin perder tu depósito",
+    "appAlt": "Lotty"
+  },
+  "nav": {
+    "pool": "Pool",
+    "tickets": "Tickets",
+    "streak": "Racha",
+    "profile": "Perfil"
+  },
+  "pool": {
+    "stats": "Estadísticas del Pool",
+    "totalPool": "Pool Total",
+    "participants": "Participantes",
+    "yourTickets": "Tus Tickets",
+    "weeklyPrize": "Premio Semanal",
+    "currentPrizePool": "Premio Actual",
+    "aaveApy": "APY Aave",
+    "aaveApyValue": "~14%",
+    "yieldForNextDraw": "Rendimiento para el próximo sorteo"
+  },
+  "tickets": {
+    "title": "Tus Tickets",
+    "buy": "Comprar",
+    "buyAlt": "Comprar tickets",
+    "noTickets": "Sin tickets aún",
+    "buyToEnter": "Compra tickets para participar en el sorteo semanal",
+    "howItWorks": "Cómo funcionan los tickets",
+    "howItWorksDesc": "Cada ticket cuesta {{price}} USDC. Tu depósito genera rendimiento en Aave y el rendimiento acumulado forma el premio semanal. Puedes retirar tu depósito cuando quieras.",
+    "modal": {
+      "title": "Comprar Tickets",
+      "ticket": "ticket",
+      "tickets": "tickets",
+      "pricePerTicket": "Precio por ticket",
+      "total": "Total",
+      "buyButton_one": "Comprar 1 Ticket",
+      "buyButton_other": "Comprar {{count}} Tickets",
+      "preparing": "Preparando transacción...",
+      "processing": "Procesando..."
+    },
+    "card": {
+      "ticket": "Ticket",
+      "tickets": "Tickets"
+    }
+  },
+  "streak": {
+    "title": "TU RACHA",
+    "description": "Compra tickets 3 de 7 días a la semana para mantener tu racha",
+    "tip1": "compra tickets diariamente",
+    "tip2": "mantén tu racha",
+    "tip3": "gana premios más grandes",
+    "allRewards": "TODOS LOS PREMIOS",
+    "daysLabel": "{{count}} días",
+    "apyLabel": "{{apy}}% APY",
+    "weeklySummary": "tu resumen semanal",
+    "ticketsPurchased": "{{count}}/7 tickets comprados",
+    "days": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mié",
+      "thu": "Jue",
+      "fri": "Vie",
+      "sat": "Sáb",
+      "sun": "Dom"
+    }
+  },
+  "profile": {
+    "title": "Tu Perfil",
+    "wallet": "Billetera",
+    "base": "Base",
+    "baseSepolia": "Base Sepolia",
+    "totalBalance": "Balance Total",
+    "usdc": "USDC",
+    "aUsdc": "aUSDC",
+    "accountStats": "Estadísticas de Cuenta",
+    "deposited": "Depositado",
+    "activeTickets": "Tickets Activos",
+    "streak": "Racha",
+    "currentApy": "APY Actual",
+    "days": "días",
+    "accruedRewards": "Recompensas Acumuladas",
+    "noActivePosition": "Sin posición activa",
+    "buyToStart": "Compra tickets para empezar a ganar recompensas",
+    "disconnectWallet": "Desconectar Billetera",
+    "withdrawConfirm": "¿Seguro que quieres retirar todo tu USDC? Esto cerrará tu posición y reiniciará tu racha.",
+    "claimConfirm": "¿Reclamar tus recompensas acumuladas?",
+    "withdrawing": "Retirando...",
+    "withdraw": "Retirar",
+    "claiming": "Reclamando...",
+    "claimRewards": "Reclamar Recompensas",
+    "disconnectModal": {
+      "title": "Desconectar Billetera",
+      "body": "¿Seguro que quieres desconectar tu billetera?"
+    }
+  },
+  "draw": {
+    "weeklyDraw": "Sorteo Semanal",
+    "nextDraw": "Próximo Sorteo",
+    "nextDrawIn": "Próximo Sorteo En",
+    "drawAvailable": "¡Sorteo disponible!",
+    "days": "días",
+    "hrs": "hs",
+    "min": "min",
+    "sec": "seg",
+    "manager": {
+      "title": "Gestor de Sorteo",
+      "startDraw": "1. Iniciar Sorteo",
+      "generateRng": "2. Generar Número Aleatorio",
+      "completeDraw": "3. Completar Sorteo y Elegir Ganador",
+      "starting": "Iniciando...",
+      "generating": "Generando...",
+      "completing": "Completando...",
+      "hintStart": "El sorteo está disponible. Inicia el proceso.",
+      "hintRng": "Sorteo iniciado. Genera el número aleatorio para elegir al ganador.",
+      "hintComplete": "Número aleatorio listo. Completa el sorteo para elegir al ganador."
+    }
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "disconnect": "Desconectar",
+    "copied": "¡Copiado!",
+    "walletNotConnected": "Billetera sin conectar",
+    "usdc": "USDC"
+  },
+  "toasts": {
+    "purchased_one": "¡Compra exitosa de 1 ticket!",
+    "purchased_other": "¡Compra exitosa de {{count}} tickets!",
+    "withdrawn": "¡Retiro exitoso!",
+    "rewardsClaimed": "¡Recompensas reclamadas exitosamente!"
+  },
+  "errors": {
+    "timeout": "La transacción expiró. Revisa tu billetera Lemon e intenta de nuevo.",
+    "cancelled": "La transacción fue cancelada.",
+    "failed": "La transacción falló. El contrato pudo revertirse. Verifica que tengas suficiente USDC (Aave testnet) e intenta de nuevo.",
+    "insufficientBalance": "Saldo insuficiente. Necesitas al menos 10 USDC por ticket.",
+    "alreadyRegistered": "Ya estás registrado. Usa \"Agregar a Posición\" en su lugar.",
+    "contractReverted": "El contrato se revirtió. Verifica tu balance de USDC y los permisos.",
+    "generic": "La transacción falló. Intenta de nuevo.",
+    "startDraw": "Error al iniciar el sorteo",
+    "generateRng": "Error al generar el número aleatorio",
+    "completeDraw": "Error al completar el sorteo"
+  },
+  "progress": {
+    "current": "ACTUAL",
+    "apy": "{{apy}}% APY"
+  }
+}

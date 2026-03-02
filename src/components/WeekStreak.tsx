@@ -1,17 +1,20 @@
 'use client'
 
+import { useTranslation } from 'react-i18next'
+
 interface WeekStreakProps {
   weekData: Array<{ day: string; active: boolean }>
 }
 
 export default function WeekStreak({ weekData }: WeekStreakProps) {
+  const { t } = useTranslation()
   const activeDays = weekData.filter(d => d.active).length
 
   return (
     <div className="neo-card">
       <div className="flex items-center justify-between mb-3">
-        <p className="text-sm text-text-main/60 font-display uppercase">your weekly summary</p>
-        <p className="text-sm font-display font-bold">{activeDays}/7 tickets purchased</p>
+        <p className="text-sm text-text-main/60 font-display uppercase">{t('streak.weeklySummary')}</p>
+        <p className="text-sm font-display font-bold">{t('streak.ticketsPurchased', { count: activeDays })}</p>
       </div>
       <div className="grid grid-cols-7 gap-2">
         {weekData.map((day, i) => (

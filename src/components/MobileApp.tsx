@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
+import { setStoredLanguage } from '@/lib/i18n'
 import { useWallet } from '@/hooks/useWallet'
 import { useLemonSDK } from '@/hooks/useLemonSDK'
 import { useContracts } from '@/hooks/useContracts'
@@ -14,6 +16,13 @@ import SavingStreak from '@/views/SavingStreak'
 import YourProfile from '@/views/YourProfile'
 
 export default function MobileApp() {
+  const { t, i18n } = useTranslation()
+
+  const toggleLanguage = () => {
+    const next = i18n.language === 'en' ? 'es' : 'en'
+    i18n.changeLanguage(next)
+    setStoredLanguage(next)
+  }
   const [activeView, setActiveView] = useState<View>('pool')
   const [toast, setToast] = useState({ visible: false, message: '' })
 
@@ -49,17 +58,17 @@ export default function MobileApp() {
     } else {
       await contracts.register(amount, onProgress)
     }
-    showToast(`Successfully purchased ${quantity} ticket${quantity > 1 ? 's' : ''}!`)
+    showToast(t('toasts.purchased', { count: quantity }))
   }
 
   const handleWithdraw = async () => {
     await contracts.unregister()
-    showToast('Successfully withdrawn!')
+    showToast(t('toasts.withdrawn'))
   }
 
   const handleClaimRewards = async () => {
     await contracts.claimPrize()
-    showToast('Rewards claimed successfully!')
+    showToast(t('toasts.rewardsClaimed'))
   }
 
   const handleDisconnect = () => {
@@ -72,7 +81,15 @@ export default function MobileApp() {
 
   // Get week purchase data for streak view
   const getWeekPurchaseData = () => {
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const days = [
+      t('streak.days.mon'),
+      t('streak.days.tue'),
+      t('streak.days.wed'),
+      t('streak.days.thu'),
+      t('streak.days.fri'),
+      t('streak.days.sat'),
+      t('streak.days.sun'),
+    ]
     const now = new Date()
     const dayOfWeek = now.getDay()
     const monday = new Date(now)
@@ -100,20 +117,28 @@ export default function MobileApp() {
         <div className="flex h-10 items-center shrink-0">
           <Image
             src="/images/lottyBanner.webp"
-            alt="Lotty"
+            alt={t('layout.appAlt')}
             width={120}
             height={48}
             className="h-10 w-auto block"
           />
         </div>
         <div className="flex h-10 items-center justify-end gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="text-xs font-display font-bold px-2 py-1 border border-border-black/20 rounded-lg hover:bg-primary-yellow/30 transition-colors"
+            data-testid="lang-switcher"
+            aria-label="Toggle language">
+            {i18n.language === 'en' ? 'ES' : 'EN'}
+          </button>
           <span className="text-xs font-mono leading-none text-text-main/70 bg-card-white/80 border border-border-black/20 rounded-lg px-2.5 py-1.5 shadow-neo-sm inline-flex items-center">
             {activeAddress ? (
               <>
                 {activeAddress.slice(0, 6)}…{activeAddress.slice(-4)}
               </>
             ) : (
-              <span className="text-text-main/50">Wallet sin conectar</span>
+              <span className="text-text-main/50">{t('common.walletNotConnected')}</span>
             )}
           </span>
         </div>

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 
 interface ProgressLevelProps {
@@ -9,6 +10,7 @@ interface ProgressLevelProps {
 }
 
 export default function ProgressLevel({ currentDays, currentAPY, nextMilestone }: ProgressLevelProps) {
+  const { t } = useTranslation()
   const progress = nextMilestone
     ? Math.min(100, (currentDays / nextMilestone.days) * 100)
     : 100
@@ -28,9 +30,9 @@ export default function ProgressLevel({ currentDays, currentAPY, nextMilestone }
           <span className="text-xl leading-none">🔥</span>
         </div>
         <div>
-          <p className="text-xs font-display uppercase text-text-main/60">CURRENT</p>
+          <p className="text-xs font-display uppercase text-text-main/60">{t('progress.current')}</p>
           <span className="neo-card bg-card-white px-3 py-1 inline-block mt-1">
-            <span className="font-display font-bold text-sm">{currentAPY}% APY</span>
+            <span className="font-display font-bold text-sm">{t('progress.apy', { apy: currentAPY })}</span>
           </span>
         </div>
       </div>

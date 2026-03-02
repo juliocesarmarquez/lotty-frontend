@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Loader2, Play, Shuffle, Trophy } from 'lucide-react'
 
 interface DrawManagerProps {
@@ -18,6 +19,7 @@ export default function DrawManager({
   onCompleteRNG,
   onCompleteDraw,
 }: DrawManagerProps) {
+  const { t } = useTranslation()
   const [isProcessing, setIsProcessing] = useState(false)
   const [progress, setProgress] = useState('')
   const [error, setError] = useState('')
@@ -33,7 +35,7 @@ export default function DrawManager({
       setStep('rng')
       setProgress('')
     } catch (err: any) {
-      setError(err.message || 'Failed to start draw')
+      setError(err.message || t('errors.startDraw'))
     } finally {
       setIsProcessing(false)
     }
@@ -47,7 +49,7 @@ export default function DrawManager({
       setStep('complete')
       setProgress('')
     } catch (err: any) {
-      setError(err.message || 'Failed to provide random number')
+      setError(err.message || t('errors.generateRng'))
     } finally {
       setIsProcessing(false)
     }
@@ -61,7 +63,7 @@ export default function DrawManager({
       setStep('start')
       setProgress('')
     } catch (err: any) {
-      setError(err.message || 'Failed to complete draw')
+      setError(err.message || t('errors.completeDraw'))
     } finally {
       setIsProcessing(false)
     }
@@ -71,7 +73,7 @@ export default function DrawManager({
 
   return (
     <div className="neo-card space-y-3">
-      <p className="font-display font-bold text-lg">Draw Manager</p>
+      <p className="font-display font-bold text-lg">{t('draw.manager.title')}</p>
 
       <div className="flex gap-1 mb-3">
         {['start', 'rng', 'complete'].map((s, i) => (
@@ -97,7 +99,7 @@ export default function DrawManager({
           ) : (
             <Play size={16} />
           )}
-          {isProcessing ? 'Starting...' : '1. Start Draw'}
+          {isProcessing ? t('draw.manager.starting') : t('draw.manager.startDraw')}
         </button>
       )}
 
@@ -112,7 +114,7 @@ export default function DrawManager({
           ) : (
             <Shuffle size={16} />
           )}
-          {isProcessing ? 'Generating...' : '2. Generate Random Number'}
+          {isProcessing ? t('draw.manager.generating') : t('draw.manager.generateRng')}
         </button>
       )}
 
@@ -127,7 +129,7 @@ export default function DrawManager({
           ) : (
             <Trophy size={16} />
           )}
-          {isProcessing ? 'Completing...' : '3. Complete Draw & Pick Winner'}
+          {isProcessing ? t('draw.manager.completing') : t('draw.manager.completeDraw')}
         </button>
       )}
 
@@ -145,9 +147,9 @@ export default function DrawManager({
       )}
 
       <p className="text-xs text-text-main/50 text-center">
-        {currentStep === 'start' && 'Draw is available. Start the draw process.'}
-        {currentStep === 'rng' && 'Draw started. Generate random number for winner selection.'}
-        {currentStep === 'complete' && 'Random number ready. Complete the draw to pick a winner.'}
+        {currentStep === 'start' && t('draw.manager.hintStart')}
+        {currentStep === 'rng' && t('draw.manager.hintRng')}
+        {currentStep === 'complete' && t('draw.manager.hintComplete')}
       </p>
     </div>
   )

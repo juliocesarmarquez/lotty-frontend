@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 
 interface DrawCountdownProps {
@@ -38,9 +39,9 @@ function getNextSundayMidnightUTC(): Date {
   return nextSunday
 }
 
-function formatLocalDrawTime(): string {
+function formatLocalDrawTime(locale: string): string {
   const nextDraw = getNextSundayMidnightUTC()
-  return nextDraw.toLocaleString(undefined, {
+  return nextDraw.toLocaleString(locale, {
     weekday: 'short',
     month: 'short',
     day: 'numeric',
@@ -50,6 +51,7 @@ function formatLocalDrawTime(): string {
 }
 
 export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawCountdownProps) {
+  const { t, i18n } = useTranslation()
   const initialSeconds = Number(timeUntilDraw)
   const [startedAt] = useState(() => Date.now())
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() =>
@@ -70,11 +72,11 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
 
   if (isDrawReady) {
     if (variant === 'compact') {
-      return (
-        <div className="neo-card-yellow text-center py-3 ">
-          <p className="font-display font-bold text-lg">Draw available!</p>
-        </div>
-      )
+    return (
+      <div className="neo-card-yellow text-center py-3 ">
+        <p className="font-display font-bold text-lg">{t('draw.drawAvailable')}</p>
+      </div>
+    )
     }
 
     return (
@@ -86,8 +88,8 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
           height={64}
           className="absolute -right-2 -top-2 opacity-100"
         />
-        <p className="text-sm font-display uppercase text-text-main/60">Weekly Draw</p>
-        <p className="font-display text-3xl font-bold mt-2">Draw available!</p>
+        <p className="text-sm font-display uppercase text-text-main/60">{t('draw.weeklyDraw')}</p>
+        <p className="font-display text-3xl font-bold mt-2">{t('draw.drawAvailable')}</p>
       </div>
     )
   }
@@ -97,7 +99,7 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
   if (variant === 'compact') {
     return (
       <div className={`neo-card-yellow text-center py-3 ${isUrgent ? '' : ''}`}>
-        <p className="text-xs font-display uppercase text-text-main/60 mb-1">Next Draw</p>
+        <p className="text-xs font-display uppercase text-text-main/60 mb-1">{t('draw.nextDraw')}</p>
         <p className="font-display font-bold text-lg">
           {timeLeft.days > 0 && <span>{timeLeft.days}d </span>}
           <span>{pad(timeLeft.hours)}h </span>
@@ -117,30 +119,30 @@ export default function DrawCountdown({ timeUntilDraw, variant = 'full' }: DrawC
         height={64}
         className="absolute -right-2 -top-2 opacity-100"
       />
-      <p className="text-sm font-display uppercase text-text-main/60">Next Draw In</p>
+      <p className="text-sm font-display uppercase text-text-main/60">{t('draw.nextDrawIn')}</p>
       <div className="flex items-center justify-center gap-3 mt-3">
         {timeLeft.days > 0 && (
           <div className="text-center">
             <p className="font-display text-3xl font-bold">{timeLeft.days}</p>
-            <p className="text-xs text-text-main/50 uppercase">days</p>
+            <p className="text-xs text-text-main/50 uppercase">{t('draw.days')}</p>
           </div>
         )}
         <div className="text-center">
           <p className="font-display text-3xl font-bold">{pad(timeLeft.hours)}</p>
-          <p className="text-xs text-text-main/50 uppercase">hrs</p>
+          <p className="text-xs text-text-main/50 uppercase">{t('draw.hrs')}</p>
         </div>
         <span className="font-display text-2xl font-bold text-text-main/30">:</span>
         <div className="text-center">
           <p className="font-display text-3xl font-bold">{pad(timeLeft.minutes)}</p>
-          <p className="text-xs text-text-main/50 uppercase">min</p>
+          <p className="text-xs text-text-main/50 uppercase">{t('draw.min')}</p>
         </div>
         <span className="font-display text-2xl font-bold text-text-main/30">:</span>
         <div className="text-center">
           <p className="font-display text-3xl font-bold">{pad(timeLeft.seconds)}</p>
-          <p className="text-xs text-text-main/50 uppercase">sec</p>
+          <p className="text-xs text-text-main/50 uppercase">{t('draw.sec')}</p>
         </div>
       </div>
-      <p className="text-xs text-text-main/40 mt-3">{formatLocalDrawTime()}</p>
+      <p className="text-xs text-text-main/40 mt-3">{formatLocalDrawTime(i18n.language)}</p>
     </div>
   )
 }

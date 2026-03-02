@@ -13,10 +13,12 @@
   "dependencies": {
     "@lemoncash/mini-app-sdk": "^0.1.11",
     "ethers": "6",
+    "i18next": "^25.8.13",
     "lucide-react": "^0.563.0",
     "next": "^14.2.22",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-i18next": "^16.5.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",

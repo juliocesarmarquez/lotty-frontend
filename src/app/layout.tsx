@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Chakra_Petch } from 'next/font/google'
 import { LemonProvider } from '@/providers/LemonProvider'
+import I18nProvider from '@/providers/I18nProvider'
+import LangSync from '@/components/LangSync'
 import './globals.css'
 
 const inter = Inter({
@@ -28,7 +30,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${chakraPetch.variable}`}>
       <body className="font-body bg-cream text-text-main min-h-screen">
         <LemonProvider>
-          {children}
+          <I18nProvider>
+            <LangSync />
+            {children}
+          </I18nProvider>
         </LemonProvider>
       </body>
     </html>
