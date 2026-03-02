@@ -84,6 +84,7 @@
     "noActivePosition": "No active position",
     "buyToStart": "Buy tickets to start earning rewards",
     "disconnectWallet": "Disconnect Wallet",
+    "language": "Language",
     "withdrawConfirm": "Are you sure you want to withdraw all your USDC? This will close your position and reset your streak.",
     "claimConfirm": "Claim your accrued rewards?",
     "withdrawing": "Withdrawing...",
@@ -125,6 +126,10 @@
     "usdc": "USDC"
   },
   "toasts": {
+    "successTitle": "Success",
+    "errorTitle": "Error",
+    "infoTitle": "Info",
+    "warningTitle": "Warning",
     "purchased_one": "Successfully purchased 1 ticket!",
     "purchased_other": "Successfully purchased {{count}} tickets!",
     "withdrawn": "Successfully withdrawn!",

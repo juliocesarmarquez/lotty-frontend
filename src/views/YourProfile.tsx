@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { setStoredLanguage } from '@/lib/i18n';
 import {
   Copy,
   LogOut,
@@ -9,6 +10,7 @@ import {
   TrendingUp,
   ArrowDownToLine,
   Gift,
+  Languages,
 } from 'lucide-react';
 import Image from 'next/image';
 import DisconnectModal from '@/components/DisconnectModal';
@@ -39,7 +41,13 @@ export default function YourProfile({
   onClaimRewards,
   onDisconnect,
 }: Readonly<YourProfileProps>) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const next = i18n.language === 'en' ? 'es' : 'en';
+    i18n.changeLanguage(next);
+    setStoredLanguage(next);
+  };
   const [showDisconnect, setShowDisconnect] = useState(false);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
   const [isClaiming, setIsClaiming] = useState(false);
@@ -221,6 +229,22 @@ export default function YourProfile({
             </p>
           </div>
         )}
+      </div>
+
+      {/* Language */}
+      <div className="neo-card flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Languages size={18} className="text-text-main/70" />
+          <span className="font-display font-bold">{t('profile.language')}</span>
+        </div>
+        <button
+          type="button"
+          onClick={toggleLanguage}
+          className="text-sm font-display font-bold px-4 py-2 border-2 border-border-black rounded-xl hover:bg-primary-yellow/30 transition-colors"
+          data-testid="lang-switcher"
+          aria-label="Toggle language">
+          {i18n.language === 'en' ? 'Español' : 'English'}
+        </button>
       </div>
 
       {/* Disconnect */}

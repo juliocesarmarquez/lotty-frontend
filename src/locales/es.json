@@ -84,6 +84,7 @@
     "noActivePosition": "Sin posición activa",
     "buyToStart": "Compra tickets para empezar a ganar recompensas",
     "disconnectWallet": "Desconectar Billetera",
+    "language": "Idioma",
     "withdrawConfirm": "¿Seguro que quieres retirar todo tu USDC? Esto cerrará tu posición y reiniciará tu racha.",
     "claimConfirm": "¿Reclamar tus recompensas acumuladas?",
     "withdrawing": "Retirando...",
@@ -125,6 +126,10 @@
     "usdc": "USDC"
   },
   "toasts": {
+    "successTitle": "Éxito",
+    "errorTitle": "Error",
+    "infoTitle": "Información",
+    "warningTitle": "Advertencia",
     "purchased_one": "¡Compra exitosa de 1 ticket!",
     "purchased_other": "¡Compra exitosa de {{count}} tickets!",
     "withdrawn": "¡Retiro exitoso!",
