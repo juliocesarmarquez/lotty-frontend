@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import { useLanguage } from '@/i18n/LanguageContext'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface WelcomeScreenProps {
   onConnect: () => void
@@ -10,8 +12,13 @@ interface WelcomeScreenProps {
 }
 
 export default function WelcomeScreen({ onConnect, isConnecting, hasMetaMask, isLemonEnvironment }: WelcomeScreenProps) {
+  const { t } = useLanguage()
+
   return (
-    <div className="min-h-screen bg-cream flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-cream flex flex-col items-center justify-center p-6 relative">
+      <div className="absolute top-4 right-4">
+        <LanguageSwitcher />
+      </div>
       <div className="max-w-sm w-full space-y-6">
         <div className="text-center space-y-4">
           <Image
@@ -22,7 +29,7 @@ export default function WelcomeScreen({ onConnect, isConnecting, hasMetaMask, is
             className="mx-auto"
             priority
           />
-          <p className="text-text-main/70 text-lg font-display">No-Loss Lottery</p>
+          <p className="text-text-main/70 text-lg font-display">{t('welcome.no_loss_lottery')}</p>
           <Image
             src="/images/mascot.png"
             alt="Lotty Mascot"
@@ -34,23 +41,23 @@ export default function WelcomeScreen({ onConnect, isConnecting, hasMetaMask, is
         </div>
 
         <div className="neo-card space-y-3">
-          <h2 className="font-display font-bold text-lg">How it works</h2>
+          <h2 className="font-display font-bold text-lg">{t('welcome.how_it_works')}</h2>
           <ul className="space-y-2 text-sm text-text-main/80">
             <li className="flex items-start gap-2">
               <span className="font-display font-bold text-primary-yellow bg-border-black w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>
-              <span>Deposit USDC to get lottery tickets</span>
+              <span>{t('welcome.step1')}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="font-display font-bold text-primary-yellow bg-border-black w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>
-              <span>Your deposit earns yield in Aave</span>
+              <span>{t('welcome.step2')}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="font-display font-bold text-primary-yellow bg-border-black w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>
-              <span>Weekly draws — winner takes all yield</span>
+              <span>{t('welcome.step3')}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="font-display font-bold text-primary-yellow bg-border-black w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">4</span>
-              <span>Withdraw anytime — never lose your deposit</span>
+              <span>{t('welcome.step4')}</span>
             </li>
           </ul>
         </div>
@@ -60,7 +67,7 @@ export default function WelcomeScreen({ onConnect, isConnecting, hasMetaMask, is
           disabled={isConnecting}
           className="neo-button w-full text-center"
         >
-          {isConnecting ? 'Connecting...' : isLemonEnvironment ? 'Connect with Lemon' : hasMetaMask ? 'Connect Wallet' : 'Install MetaMask'}
+          {isConnecting ? t('common.connecting') : isLemonEnvironment ? t('common.connect_lemon') : hasMetaMask ? t('common.connect_wallet') : t('common.install_metamask')}
         </button>
       </div>
     </div>

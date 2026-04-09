@@ -1,0 +1,98 @@
+{
+    "common": {
+        "connect_wallet": "Connect Wallet",
+        "install_metamask": "Install MetaMask",
+        "disconnect_wallet": "Disconnect Wallet",
+        "connecting": "Connecting...",
+        "connect_lemon": "Connect with Lemon",
+        "wallet_not_connected": "Wallet not connected"
+    },
+    "nav": {
+        "pool": "Pool",
+        "tickets": "Tickets",
+        "streak": "Streak",
+        "profile": "Profile",
+        "winners": "Winners"
+    },
+    "welcome": {
+        "no_loss_lottery": "No-Loss Lottery",
+        "how_it_works": "How it works",
+        "step1": "Deposit USDC to get lottery tickets",
+        "step2": "Your deposit earns yield in Aave",
+        "step3": "Weekly draws — winner takes all yield",
+        "step4": "Withdraw anytime — never lose your deposit"
+    },
+    "app": {
+        "purchase_success": "Successfully purchased {{quantity}} ticket(s)!",
+        "withdraw_success": "Successfully withdrawn!",
+        "claim_success": "Rewards claimed successfully!"
+    },
+    "pool": {
+        "stats_title": "Pool Stats",
+        "total_pool": "Total Pool",
+        "participants": "Participants",
+        "your_tickets": "Your Tickets",
+        "weekly_prize": "Weekly Prize",
+        "current_prize_pool": "Current Prize Pool",
+        "aave_apy": "Aave APY",
+        "yield_next_draw": "Yield for next draw"
+    },
+    "profile": {
+        "title": "Your Profile",
+        "wallet": "Wallet",
+        "total_balance": "Total Balance",
+        "account_stats": "Account Stats",
+        "deposited": "Deposited",
+        "active_tickets": "Active Tickets",
+        "streak": "Streak",
+        "days": "days",
+        "current_apy": "Current APY",
+        "accrued_rewards": "Accrued Rewards",
+        "no_position": "No active position",
+        "buy_to_earn": "Buy tickets to start earning rewards",
+        "withdraw_button": "Withdraw",
+        "withdrawing": "Withdrawing...",
+        "claim_button": "Claim Rewards",
+        "claiming": "Claiming...",
+        "confirm_withdraw": "Are you sure you want to withdraw all your USDC? This will close your position and reset your streak.",
+        "confirm_claim": "Claim your accrued rewards?",
+        "copied": "Copied!"
+    },
+    "tickets": {
+        "title": "Your Tickets",
+        "buy_button": "Buy",
+        "no_tickets": "No tickets yet",
+        "buy_to_enter": "Buy tickets to enter the weekly draw",
+        "how_it_works": "How tickets work",
+        "how_desc": "Each ticket costs {{price}} USDC. Your deposit earns yield in Aave, and the accumulated yield forms the weekly prize pool. You can withdraw your deposit anytime."
+    },
+    "streak": {
+        "title": "YOUR STREAK",
+        "maintain_desc": "Buy tickets 3 out of 7 days a week to maintain your streak",
+        "benefit1": "buy tickets daily",
+        "benefit2": "keep your streak",
+        "benefit3": "win bigger prizes",
+        "all_rewards": "ALL REWARDS",
+        "days": "days",
+        "apy": "APY"
+    },
+    "winners": {
+        "title": "Winners History",
+        "no_history": "No draws yet",
+        "description": "Weekly draw winners will appear here"
+    },
+    "modal": {
+        "buy_tickets": "Buy Tickets",
+        "price_per_ticket": "Price per ticket",
+        "total": "Total",
+        "processing": "Processing...",
+        "buy_quantity": "Buy {{quantity}} Ticket{{s}}",
+        "ticket_label": "ticket{{s}}",
+        "Ticket_label": "Ticket{{s}}",
+        "disconnect_title": "Disconnect Wallet",
+        "disconnect_desc": "Are you sure you want to disconnect your wallet?",
+        "cancel": "Cancel",
+        "confirm_disconnect": "Disconnect",
+        "preparing": "Preparing transaction..."
+    }
+}

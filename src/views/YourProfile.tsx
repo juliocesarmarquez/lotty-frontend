@@ -5,6 +5,7 @@ import { Copy, LogOut, Wallet, TrendingUp, ArrowDownToLine, Gift } from 'lucide-
 import Image from 'next/image'
 import DisconnectModal from '@/components/DisconnectModal'
 import { formatUSDC, NETWORK } from '@/lib/constants'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 interface YourProfileProps {
   address: string
@@ -31,6 +32,7 @@ export default function YourProfile({
   onClaimRewards,
   onDisconnect,
 }: YourProfileProps) {
+  const { t } = useLanguage()
   const [showDisconnect, setShowDisconnect] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [isClaiming, setIsClaiming] = useState(false)
@@ -43,13 +45,13 @@ export default function YourProfile({
   }
 
   const handleWithdraw = async () => {
-    if (!confirm('Are you sure you want to withdraw all your USDC? This will close your position and reset your streak.')) return
+    if (!confirm(t('profile.confirm_withdraw'))) return
     setIsWithdrawing(true)
     try { await onWithdraw() } finally { setIsWithdrawing(false) }
   }
 
   const handleClaimRewards = async () => {
-    if (!confirm('Claim your accrued rewards?')) return
+    if (!confirm(t('profile.confirm_claim'))) return
     setIsClaiming(true)
     try { await onClaimRewards() } finally { setIsClaiming(false) }
   }
@@ -65,7 +67,7 @@ export default function YourProfile({
       {/* Profile Header */}
       <div className="flex items-center gap-3">
         <Image src="/images/logoLotty.png" alt="" width={40} height={40} className="rounded-lg" />
-        <h2 className="font-display text-2xl font-bold">Your Profile</h2>
+        <h2 className="font-display text-2xl font-bold">{t('profile.title')}</h2>
       </div>
 
       {/* ═══════════════════════════════════════════ */}
@@ -74,7 +76,7 @@ export default function YourProfile({
       <div className="neo-card space-y-3">
         <div className="flex items-center gap-2 mb-1">
           <Wallet size={18} className="text-text-main/70" />
-          <h3 className="font-display font-bold">Wallet</h3>
+          <h3 className="font-display font-bold">{t('profile.wallet')}</h3>
         </div>
 
         {/* Address row */}
@@ -89,11 +91,11 @@ export default function YourProfile({
             </button>
           </div>
         </div>
-        {copied && <p className="text-xs text-green-600">Copied!</p>}
+        {copied && <p className="text-xs text-green-600">{t('profile.copied')}</p>}
 
         {/* Total Balance */}
         <div className="border-t border-gray-light pt-3">
-          <p className="text-xs font-display uppercase text-text-main/50 tracking-wide">Total Balance</p>
+          <p className="text-xs font-display uppercase text-text-main/50 tracking-wide">{t('profile.total_balance')}</p>
           <p className="font-display text-2xl font-bold mt-1">${formatUSDC(totalBalance)}</p>
           <div className="flex gap-3 mt-2">
             <div className="text-xs text-text-main/60">
@@ -114,7 +116,7 @@ export default function YourProfile({
       <div className="neo-card space-y-3">
         <div className="flex items-center gap-2 mb-1">
           <TrendingUp size={18} className="text-text-main/70" />
-          <h3 className="font-display font-bold">Account Stats</h3>
+          <h3 className="font-display font-bold">{t('profile.account_stats')}</h3>
         </div>
 
         {hasActivePosition ? (
@@ -122,22 +124,22 @@ export default function YourProfile({
             {/* Deposit Info */}
             <div className="space-y-2">
               <div className="flex justify-between items-center py-2 px-3 bg-gray-light rounded-xl">
-                <span className="text-sm text-text-main/70">Deposited</span>
+                <span className="text-sm text-text-main/70">{t('profile.deposited')}</span>
                 <span className="font-display font-bold">${formatUSDC(position!.depositedAmount)}</span>
               </div>
               <div className="flex justify-between items-center py-2 px-3 bg-gray-light rounded-xl">
-                <span className="text-sm text-text-main/70">Active Tickets</span>
+                <span className="text-sm text-text-main/70">{t('profile.active_tickets')}</span>
                 <span className="font-display font-bold">{Number(position!.tickets)}</span>
               </div>
               <div className="flex justify-between items-center py-2 px-3 bg-gray-light rounded-xl">
-                <span className="text-sm text-text-main/70">Streak</span>
+                <span className="text-sm text-text-main/70">{t('profile.streak')}</span>
                 <div className="flex items-center gap-1.5">
-                  <span className="font-display font-bold">{Number(position!.streak) * 7} days</span>
+                  <span className="font-display font-bold">{Number(position!.streak) * 7} {t('profile.days')}</span>
                   <span className="text-sm">🔥</span>
                 </div>
               </div>
               <div className="flex justify-between items-center py-2 px-3 bg-gray-light rounded-xl">
-                <span className="text-sm text-text-main/70">Current APY</span>
+                <span className="text-sm text-text-main/70">{t('profile.current_apy')}</span>
                 <span className="font-display font-bold text-green-600">{currentAPY}%</span>
               </div>
             </div>
@@ -146,7 +148,7 @@ export default function YourProfile({
             <div className="border-t border-gray-light pt-3">
               <div className="neo-card-yellow flex items-center justify-between !p-3">
                 <div>
-                  <p className="text-xs font-display uppercase text-text-main/60">Accrued Rewards</p>
+                  <p className="text-xs font-display uppercase text-text-main/60">{t('profile.accrued_rewards')}</p>
                   <p className="font-display text-xl font-bold">${formatUSDC(accruedYield)}</p>
                 </div>
                 <Image src="/images/lottyPig.webp" alt="" width={40} height={40} />
@@ -156,8 +158,8 @@ export default function YourProfile({
         ) : (
           <div className="text-center py-6">
             <Image src="/images/lottyCaja.webp" alt="" width={64} height={64} className="mx-auto mb-3 opacity-60" />
-            <p className="font-display font-bold text-text-main/60">No active position</p>
-            <p className="text-sm text-text-main/40 mt-1">Buy tickets to start earning rewards</p>
+            <p className="font-display font-bold text-text-main/60">{t('profile.no_position')}</p>
+            <p className="text-sm text-text-main/40 mt-1">{t('profile.buy_to_earn')}</p>
           </div>
         )}
       </div>
@@ -168,7 +170,7 @@ export default function YourProfile({
         className="w-full flex items-center justify-center gap-2 py-3 text-text-main/50 hover:text-text-main transition-colors"
       >
         <LogOut size={16} />
-        <span className="text-sm">Disconnect Wallet</span>
+        <span className="text-sm">{t('common.disconnect_wallet')}</span>
       </button>
 
       <DisconnectModal
@@ -190,7 +192,7 @@ export default function YourProfile({
               style={{ boxShadow: '3px 3px 0px rgba(239, 68, 68, 0.5)' }}
             >
               <ArrowDownToLine size={16} />
-              <span className="text-sm">{isWithdrawing ? 'Withdrawing...' : 'Withdraw'}</span>
+              <span className="text-sm">{isWithdrawing ? t('profile.withdrawing') : t('profile.withdraw_button')}</span>
             </button>
             <button
               onClick={handleClaimRewards}
@@ -199,7 +201,7 @@ export default function YourProfile({
               style={{ boxShadow: '3px 3px 0px rgba(0, 0, 0, 1)' }}
             >
               <Gift size={16} />
-              <span className="text-sm">{isClaiming ? 'Claiming...' : 'Claim Rewards'}</span>
+              <span className="text-sm">{isClaiming ? t('profile.claiming') : t('profile.claim_button')}</span>
             </button>
           </div>
         </div>

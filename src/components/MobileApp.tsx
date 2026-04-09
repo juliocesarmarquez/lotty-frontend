@@ -8,12 +8,17 @@ import { useContracts } from '@/hooks/useContracts'
 import { getAPYForStreak, getNextMilestone, TICKET_PRICE } from '@/lib/constants'
 import BottomNav, { type View } from './BottomNav'
 import SuccessToast from './SuccessToast'
+import LanguageSwitcher from './LanguageSwitcher'
 import PoolInformation from '@/views/PoolInformation'
 import YourTickets from '@/views/YourTickets'
 import SavingStreak from '@/views/SavingStreak'
 import YourProfile from '@/views/YourProfile'
+import WinnersHistory from '@/views/WinnersHistory'
+import { useLanguage } from '@/i18n/LanguageContext'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 export default function MobileApp() {
+  const { t, locale } = useLanguage()
   const [activeView, setActiveView] = useState<View>('pool')
   const [toast, setToast] = useState({ visible: false, message: '' })
 
@@ -49,17 +54,17 @@ export default function MobileApp() {
     } else {
       await contracts.register(amount, onProgress)
     }
-    showToast(`Successfully purchased ${quantity} ticket${quantity > 1 ? 's' : ''}!`)
+    showToast(t('app.purchase_success', { quantity }))
   }
 
   const handleWithdraw = async () => {
     await contracts.unregister()
-    showToast('Successfully withdrawn!')
+    showToast(t('app.withdraw_success'))
   }
 
   const handleClaimRewards = async () => {
     await contracts.claimPrize()
-    showToast('Rewards claimed successfully!')
+    showToast(t('app.claim_success'))
   }
 
   const handleDisconnect = () => {
@@ -82,7 +87,7 @@ export default function MobileApp() {
     if (activeAddress) {
       try {
         purchases = JSON.parse(localStorage.getItem(`lotty_daily_purchases_${activeAddress}`) || '{}')
-      } catch {}
+      } catch { }
     }
 
     return days.map((day, i) => {
@@ -107,75 +112,87 @@ export default function MobileApp() {
           />
         </div>
         <div className="flex h-10 items-center justify-end gap-2 shrink-0">
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
           <span className="text-xs font-mono leading-none text-text-main/70 bg-card-white/80 border border-border-black/20 rounded-lg px-2.5 py-1.5 shadow-neo-sm inline-flex items-center">
             {activeAddress ? (
               <>
                 {activeAddress.slice(0, 6)}…{activeAddress.slice(-4)}
               </>
             ) : (
-              <span className="text-text-main/50">Wallet sin conectar</span>
+              <span className="text-text-main/50">{t('common.wallet_not_connected')}</span>
             )}
           </span>
+          <div className="block sm:hidden flex-shrink-0">
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
 
       {/* Content */}
-      <main className="px-4 pt-4">
-        {activeView === 'pool' && (
-          <PoolInformation
-            totalDeposits={contracts.poolStats?.totalDeposits ?? 0n}
-            participantCount={contracts.poolStats?.participantCount ?? 0n}
-            currentPrizePool={contracts.poolStats?.currentPrizePool ?? 0n}
-            timeUntilDraw={contracts.poolStats?.timeUntilDraw ?? 0n}
-            estimatedWeeklyYield={contracts.poolStats?.estimatedWeeklyYield ?? 0n}
-            userTickets={userTickets}
-            accumulatedYield={contracts.poolStats?.accumulatedYield ?? 0n}
-            canDraw={contracts.poolStats?.canDraw ?? false}
-            isDrawPending={contracts.poolStats?.isDrawPending ?? false}
-            onStartDraw={contracts.startDraw}
-            onCompleteRNG={contracts.completeRNG}
-            onCompleteDraw={contracts.completeDraw}
-            currentDays={currentDays}
-            currentAPY={currentAPY}
-            nextMilestone={nextMilestone}
-          />
-        )}
+      <main key={locale} className="px-4 pt-4">
+        <ErrorBoundary>
+          {activeView === 'pool' && (
+            <PoolInformation
+              totalDeposits={contracts.poolStats?.totalDeposits ?? 0n}
+              participantCount={contracts.poolStats?.participantCount ?? 0n}
+              currentPrizePool={contracts.poolStats?.currentPrizePool ?? 0n}
+              timeUntilDraw={contracts.poolStats?.timeUntilDraw ?? 0n}
+              estimatedWeeklyYield={contracts.poolStats?.estimatedWeeklyYield ?? 0n}
+              userTickets={userTickets}
+              accumulatedYield={contracts.poolStats?.accumulatedYield ?? 0n}
+              canDraw={contracts.poolStats?.canDraw ?? false}
+              isDrawPending={contracts.poolStats?.isDrawPending ?? false}
+              onStartDraw={contracts.startDraw}
+              onCompleteRNG={contracts.completeRNG}
+              onCompleteDraw={contracts.completeDraw}
+              currentDays={currentDays}
+              currentAPY={currentAPY}
+              nextMilestone={nextMilestone}
+            />
+          )}
 
-        {activeView === 'tickets' && (
-          <YourTickets
-            onBuyTickets={handleBuyTickets}
-            ticketPrice={10}
-            walletAddress={activeAddress}
-            timeUntilDraw={contracts.poolStats?.timeUntilDraw ?? 0n}
-          />
-        )}
+          {activeView === 'tickets' && (
+            <YourTickets
+              onBuyTickets={handleBuyTickets}
+              ticketPrice={10}
+              walletAddress={activeAddress}
+              timeUntilDraw={contracts.poolStats?.timeUntilDraw ?? 0n}
+            />
+          )}
 
-        {activeView === 'streak' && (
-          <SavingStreak
-            currentStreak={currentStreak}
-            currentAPY={currentAPY}
-            weekData={getWeekPurchaseData()}
-            nextMilestone={nextMilestone}
-          />
-        )}
+          {activeView === 'streak' && (
+            <SavingStreak
+              currentStreak={currentStreak}
+              currentAPY={currentAPY}
+              weekData={getWeekPurchaseData()}
+              nextMilestone={nextMilestone}
+            />
+          )}
 
-        {activeView === 'profile' && activeAddress && (
-          <YourProfile
-            address={activeAddress}
-            balances={contracts.balances}
-            position={contracts.position ? {
-              depositedAmount: contracts.position.depositedAmount,
-              tickets: contracts.position.tickets,
-              streak: contracts.position.streak,
-              isActive: contracts.position.isActive,
-              accruedYield: contracts.position.accruedYield,
-            } : null}
-            currentAPY={currentAPY}
-            onWithdraw={handleWithdraw}
-            onClaimRewards={handleClaimRewards}
-            onDisconnect={handleDisconnect}
-          />
-        )}
+          {activeView === 'winners' && (
+            <WinnersHistory t={t} />
+          )}
+
+          {activeView === 'profile' && activeAddress && (
+            <YourProfile
+              address={activeAddress}
+              balances={contracts.balances}
+              position={contracts.position ? {
+                depositedAmount: contracts.position.depositedAmount,
+                tickets: contracts.position.tickets,
+                streak: contracts.position.streak,
+                isActive: contracts.position.isActive,
+                accruedYield: contracts.position.accruedYield,
+              } : null}
+              currentAPY={currentAPY}
+              onWithdraw={handleWithdraw}
+              onClaimRewards={handleClaimRewards}
+              onDisconnect={handleDisconnect}
+            />
+          )}
+        </ErrorBoundary>
       </main>
 
       <BottomNav activeView={activeView} onViewChange={setActiveView} />

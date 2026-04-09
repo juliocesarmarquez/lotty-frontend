@@ -5,6 +5,7 @@ import DrawCountdown from '@/components/DrawCountdown'
 import DrawManager from '@/components/DrawManager'
 import ProgressLevel from '@/components/ProgressLevel'
 import { formatUSDC } from '@/lib/constants'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 interface PoolInformationProps {
   totalDeposits: bigint
@@ -41,15 +42,17 @@ export default function PoolInformation({
   currentAPY,
   nextMilestone,
 }: PoolInformationProps) {
+  const { t } = useLanguage()
+
   return (
     <div className="space-y-4 pb-24">
-      <h2 className="font-display text-2xl font-bold">Pool Stats</h2>
+      <h2 className="font-display text-2xl font-bold">{t('pool.stats_title')}</h2>
 
       <div className="grid grid-cols-2 gap-3">
-        <StatCard label="Total Pool" value={`$${formatUSDC(totalDeposits)}`} icon="💰" />
-        <StatCard label="Participants" value={participantCount.toString()} icon="👥" />
-        <StatCard label="Your Tickets" value={userTickets.toString()} icon="🎟️" />
-        <StatCard label="Weekly Prize" value={`$${formatUSDC(estimatedWeeklyYield)}`} icon="🏆" />
+        <StatCard label={t('pool.total_pool')} value={`$${formatUSDC(totalDeposits)}`} icon="💰" />
+        <StatCard label={t('pool.participants')} value={participantCount.toString()} icon="👥" />
+        <StatCard label={t('pool.your_tickets')} value={userTickets.toString()} icon="🎟️" />
+        <StatCard label={t('pool.weekly_prize')} value={`$${formatUSDC(estimatedWeeklyYield)}`} icon="🏆" />
       </div>
 
       <DrawCountdown timeUntilDraw={timeUntilDraw} />
@@ -73,17 +76,17 @@ export default function PoolInformation({
       <div className="neo-card space-y-3">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-sm font-display text-text-main/60">Current Prize Pool</p>
+            <p className="text-sm font-display text-text-main/60">{t('pool.current_prize_pool')}</p>
             <p className="font-display text-2xl font-bold">${formatUSDC(currentPrizePool)}</p>
           </div>
           <div className="text-right">
-            <p className="text-sm font-display text-text-main/60">Aave APY</p>
+            <p className="text-sm font-display text-text-main/60">{t('pool.aave_apy')}</p>
             <p className="font-display text-xl font-bold text-green-600">~14%</p>
           </div>
         </div>
         {accumulatedYield > 0n && (
           <div className="border-t border-gray-light pt-3 flex justify-between items-center">
-            <p className="text-sm font-display text-text-main/60">Yield for next draw</p>
+            <p className="text-sm font-display text-text-main/60">{t('pool.yield_next_draw')}</p>
             <p className="font-display font-bold text-green-600">${formatUSDC(accumulatedYield)}</p>
           </div>
         )}

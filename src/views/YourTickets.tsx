@@ -6,6 +6,7 @@ import Image from 'next/image'
 import TicketCard from '@/components/TicketCard'
 import BuyTicketModal from '@/components/BuyTicketModal'
 import DrawCountdown from '@/components/DrawCountdown'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 interface TicketRecord {
   id: string
@@ -22,6 +23,7 @@ interface YourTicketsProps {
 }
 
 export default function YourTickets({ onBuyTickets, ticketPrice, walletAddress, timeUntilDraw }: YourTicketsProps) {
+  const { t } = useLanguage()
   const [showModal, setShowModal] = useState(false)
   const [tickets, setTickets] = useState<TicketRecord[]>([])
 
@@ -31,7 +33,7 @@ export default function YourTickets({ onBuyTickets, ticketPrice, walletAddress, 
     try {
       const stored = localStorage.getItem(`lotty_tickets_${walletAddress}`)
       if (stored) setTickets(JSON.parse(stored))
-    } catch {}
+    } catch { }
   }, [walletAddress])
 
   const handleBuy = async (quantity: number, onProgress: (step: string) => void) => {
@@ -59,17 +61,17 @@ export default function YourTickets({ onBuyTickets, ticketPrice, walletAddress, 
         const purchases = JSON.parse(localStorage.getItem(key) || '{}')
         purchases[today] = true
         localStorage.setItem(key, JSON.stringify(purchases))
-      } catch {}
+      } catch { }
     }
   }
 
   return (
     <div className="space-y-4 pb-24">
       <div className="flex items-center justify-between">
-        <h2 className="font-display text-2xl font-bold">Your Tickets</h2>
+        <h2 className="font-display text-2xl font-bold">{t('tickets.title')}</h2>
         <button onClick={() => setShowModal(true)} className="neo-button flex items-center gap-2 py-2 px-4">
           <Plus size={16} />
-          <span>Buy</span>
+          <span>{t('tickets.buy_button')}</span>
         </button>
       </div>
 
@@ -82,8 +84,8 @@ export default function YourTickets({ onBuyTickets, ticketPrice, walletAddress, 
             height={80}
             className="mx-auto mb-3"
           />
-          <p className="font-display font-bold">No tickets yet</p>
-          <p className="text-sm text-text-main/60 mt-1">Buy tickets to enter the weekly draw</p>
+          <p className="font-display font-bold">{t('tickets.no_tickets')}</p>
+          <p className="text-sm text-text-main/60 mt-1">{t('tickets.buy_to_enter')}</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -100,8 +102,8 @@ export default function YourTickets({ onBuyTickets, ticketPrice, walletAddress, 
       <div className="neo-card flex items-start gap-3">
         <Info size={18} className="text-text-main/50 mt-0.5 flex-shrink-0" />
         <div className="text-sm text-text-main/70">
-          <p className="font-display font-bold text-text-main mb-1">How tickets work</p>
-          <p>Each ticket costs {ticketPrice} USDC. Your deposit earns yield in Aave, and the accumulated yield forms the weekly prize pool. You can withdraw your deposit anytime.</p>
+          <p className="font-display font-bold text-text-main mb-1">{t('tickets.how_it_works')}</p>
+          <p>{t('tickets.how_desc', { price: ticketPrice })}</p>
         </div>
       </div>
 

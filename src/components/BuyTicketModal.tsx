@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { X, Minus, Plus, Loader2 } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 interface BuyTicketModalProps {
   isOpen: boolean
@@ -12,6 +13,7 @@ interface BuyTicketModalProps {
 }
 
 export default function BuyTicketModal({ isOpen, onClose, onBuy, ticketPrice }: BuyTicketModalProps) {
+  const { t } = useLanguage()
   const [quantity, setQuantity] = useState(1)
   const [isProcessing, setIsProcessing] = useState(false)
   const [progress, setProgress] = useState('')
@@ -24,7 +26,7 @@ export default function BuyTicketModal({ isOpen, onClose, onBuy, ticketPrice }: 
   const handleBuy = async () => {
     setIsProcessing(true)
     setError('')
-    setProgress('Preparing transaction...')
+    setProgress(t('modal.preparing'))
     try {
       await onBuy(quantity, (step: string) => setProgress(step))
       setProgress('')
@@ -67,7 +69,7 @@ export default function BuyTicketModal({ isOpen, onClose, onBuy, ticketPrice }: 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image src="/images/lottyRuleta.webp" alt="" width={36} height={36} />
-            <h2 className="font-display text-xl font-bold">Buy Tickets</h2>
+            <h2 className="font-display text-xl font-bold">{t('modal.buy_tickets')}</h2>
           </div>
           <button onClick={handleClose} className="p-1" disabled={isProcessing}>
             <X size={24} />
@@ -84,7 +86,7 @@ export default function BuyTicketModal({ isOpen, onClose, onBuy, ticketPrice }: 
           </button>
           <div className="text-center">
             <p className="font-display text-4xl font-bold">{quantity}</p>
-            <p className="text-sm text-text-main/70">ticket{quantity > 1 ? 's' : ''}</p>
+            <p className="text-sm text-text-main/70">{t(quantity > 1 ? 'modal.Ticket_label' : 'modal.ticket_label', { s: quantity > 1 ? 's' : '' })}</p>
           </div>
           <button
             onClick={() => setQuantity(quantity + 1)}
@@ -97,12 +99,12 @@ export default function BuyTicketModal({ isOpen, onClose, onBuy, ticketPrice }: 
 
         <div className="neo-card">
           <div className="flex justify-between text-sm">
-            <span>Price per ticket</span>
+            <span>{t('modal.price_per_ticket')}</span>
             <span className="font-bold">{ticketPrice} USDC</span>
           </div>
           <div className="border-t border-gray-light my-2" />
           <div className="flex justify-between">
-            <span className="font-display font-bold">Total</span>
+            <span className="font-display font-bold">{t('modal.total')}</span>
             <span className="font-display font-bold text-lg">{totalPrice} USDC</span>
           </div>
         </div>
@@ -125,7 +127,7 @@ export default function BuyTicketModal({ isOpen, onClose, onBuy, ticketPrice }: 
           disabled={isProcessing}
           className="neo-button w-full text-center"
         >
-          {isProcessing ? 'Processing...' : `Buy ${quantity} Ticket${quantity > 1 ? 's' : ''}`}
+          {isProcessing ? t('modal.processing') : t('modal.buy_quantity', { quantity, s: quantity > 1 ? 's' : '' })}
         </button>
       </div>
     </div>

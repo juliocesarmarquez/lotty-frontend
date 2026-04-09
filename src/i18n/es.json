@@ -1,0 +1,98 @@
+{
+    "common": {
+        "connect_wallet": "Conectar Wallet",
+        "install_metamask": "Instalar MetaMask",
+        "disconnect_wallet": "Desconectar Wallet",
+        "connecting": "Conectando...",
+        "connect_lemon": "Conectar con Lemon",
+        "wallet_not_connected": "Wallet sin conectar"
+    },
+    "nav": {
+        "pool": "Pozo",
+        "tickets": "Tickets",
+        "streak": "Racha",
+        "profile": "Perfil",
+        "winners": "Ganadores"
+    },
+    "welcome": {
+        "no_loss_lottery": "Lotería sin pérdidas",
+        "how_it_works": "Cómo funciona",
+        "step1": "Deposita USDC para obtener tickets",
+        "step2": "Tu depósito genera rendimiento en Aave",
+        "step3": "Sorteos semanales — el ganador se lleva todo el rendimiento",
+        "step4": "Retira cuando quieras — nunca pierdes tu depósito"
+    },
+    "app": {
+        "purchase_success": "¡Compra exitosa de {{quantity}} ticket(s)!",
+        "withdraw_success": "¡Retiro exitoso!",
+        "claim_success": "¡Recompensas reclamadas!"
+    },
+    "pool": {
+        "stats_title": "Estadísticas",
+        "total_pool": "Pozo Total",
+        "participants": "Participantes",
+        "your_tickets": "Tus Tickets",
+        "weekly_prize": "Premio Semanal",
+        "current_prize_pool": "Pozo de Premio Actual",
+        "aave_apy": "APY Aave",
+        "yield_next_draw": "Rendimiento para el próximo sorteo"
+    },
+    "profile": {
+        "title": "Tu Perfil",
+        "wallet": "Billetera",
+        "total_balance": "Balance Total",
+        "account_stats": "Estadísticas de la Cuenta",
+        "deposited": "Depositado",
+        "active_tickets": "Tickets Activos",
+        "streak": "Racha",
+        "days": "días",
+        "current_apy": "APY Actual",
+        "accrued_rewards": "Recompensas Acumuladas",
+        "no_position": "Sin posición activa",
+        "buy_to_earn": "Compra tickets para ganar recompensas",
+        "withdraw_button": "Retirar",
+        "withdrawing": "Retirando...",
+        "claim_button": "Reclamar",
+        "claiming": "Reclamando...",
+        "confirm_withdraw": "¿Seguro que quieres retirar todo tu USDC? Esto cerrará tu posición y reiniciará tu racha.",
+        "confirm_claim": "¿Reclamar recompensas acumuladas?",
+        "copied": "¡Copiado!"
+    },
+    "tickets": {
+        "title": "Tus Tickets",
+        "buy_button": "Comprar",
+        "no_tickets": "Sin tickets aún",
+        "buy_to_enter": "Compra tickets para entrar al sorteo",
+        "how_it_works": "Cómo funcionan los tickets",
+        "how_desc": "Cada ticket cuesta {{price}} USDC. Tu depósito genera rendimiento en Aave, y ese rendimiento forma el premio semanal. Puedes retirar cuando quieras."
+    },
+    "streak": {
+        "title": "TU RACHA",
+        "maintain_desc": "Compra tickets 3 de cada 7 días para mantener tu racha",
+        "benefit1": "compra tickets a diario",
+        "benefit2": "mantén tu racha",
+        "benefit3": "gana premios mayores",
+        "all_rewards": "TODAS LAS RECOMPENSAS",
+        "days": "días",
+        "apy": "APY"
+    },
+    "winners": {
+        "title": "Historial de Ganadores",
+        "no_history": "Sin sorteos aún",
+        "description": "Los ganadores de los sorteos semanales aparecerán aquí"
+    },
+    "modal": {
+        "buy_tickets": "Comprar Tickets",
+        "price_per_ticket": "Precio por ticket",
+        "total": "Total",
+        "processing": "Procesando...",
+        "buy_quantity": "Comprar {{quantity}} Ticket{{s}}",
+        "ticket_label": "ticket{{s}}",
+        "Ticket_label": "Ticket{{s}}",
+        "disconnect_title": "Desconectar Wallet",
+        "disconnect_desc": "¿Seguro que quieres desconectar tu wallet?",
+        "cancel": "Cancelar",
+        "confirm_disconnect": "Desconectar",
+        "preparing": "Preparando transacción..."
+    }
+}

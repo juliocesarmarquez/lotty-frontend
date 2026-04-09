@@ -1,0 +1,98 @@
+{
+    "common": {
+        "connect_wallet": "Conectar Wallet",
+        "install_metamask": "Instalar MetaMask",
+        "disconnect_wallet": "Desconectar Wallet",
+        "connecting": "Conectando...",
+        "connect_lemon": "Conectar com Lemon",
+        "wallet_not_connected": "Wallet não conectada"
+    },
+    "nav": {
+        "pool": "Prêmio",
+        "tickets": "Bilhetes",
+        "streak": "Sequência",
+        "profile": "Perfil",
+        "winners": "Vencedores"
+    },
+    "welcome": {
+        "no_loss_lottery": "Loteria sem perdas",
+        "how_it_works": "Como funciona",
+        "step1": "Deposite USDC para obter bilhetes",
+        "step2": "Seu depósito gera rendimento na Aave",
+        "step3": "Sorteios semanais — o vencedor leva todo o rendimento",
+        "step4": "Retire quando quiser — nunca perca seu depósito"
+    },
+    "app": {
+        "purchase_success": "Compra de {{quantity}} bilhete(s) com sucesso!",
+        "withdraw_success": "Retirada com sucesso!",
+        "claim_success": "Recompensas resgatadas!"
+    },
+    "pool": {
+        "stats_title": "Estatísticas",
+        "total_pool": "Prêmio Total",
+        "participants": "Participantes",
+        "your_tickets": "Seus Bilhetes",
+        "weekly_prize": "Prêmio Semanal",
+        "current_prize_pool": "Prêmio Acumulado",
+        "aave_apy": "APY Aave",
+        "yield_next_draw": "Rendimento p/ próximo sorteio"
+    },
+    "profile": {
+        "title": "Seu Perfil",
+        "wallet": "Carteira",
+        "total_balance": "Saldo Total",
+        "account_stats": "Estatísticas da Conta",
+        "deposited": "Depositado",
+        "active_tickets": "Bilhetes Ativos",
+        "streak": "Sequência",
+        "days": "dias",
+        "current_apy": "APY Atual",
+        "accrued_rewards": "Recompensas Acumuladas",
+        "no_position": "Sem posição ativa",
+        "buy_to_earn": "Compre bilhetes para ganhar recompensas",
+        "withdraw_button": "Retirar",
+        "withdrawing": "Retirando...",
+        "claim_button": "Resgatar",
+        "claiming": "Resgatando...",
+        "confirm_withdraw": "Tem certeza que deseja retirar todo o seu USDC? Isso fechará sua posição e zerará sua sequência.",
+        "confirm_claim": "Resgatar recompensas acumuladas?",
+        "copied": "Copiado!"
+    },
+    "tickets": {
+        "title": "Seus Bilhetes",
+        "buy_button": "Comprar",
+        "no_tickets": "Sem bilhetes ainda",
+        "buy_to_enter": "Compre bilhetes para entrar no sorteio",
+        "how_it_works": "Como os bilhetes funcionam",
+        "how_desc": "Cada bilhete custa {{price}} USDC. Seu depósito gera rendimento na Aave, e o rendimento forma o prêmio semanal. Você pode retirar a qualquer momento."
+    },
+    "streak": {
+        "title": "SUA SEQUÊNCIA",
+        "maintain_desc": "Compre bilhetes 3 de 7 dias na semana para manter sua sequência",
+        "benefit1": "compre bilhetes diariamente",
+        "benefit2": "mantenha sua sequência",
+        "benefit3": "ganhe prêmios maiores",
+        "all_rewards": "TODAS AS RECOMPENSAS",
+        "days": "dias",
+        "apy": "APY"
+    },
+    "winners": {
+        "title": "Histórico de Vencedores",
+        "no_history": "Nenhum sorteio ainda",
+        "description": "Os vencedores dos sorteios semanais aparecerão aqui"
+    },
+    "modal": {
+        "buy_tickets": "Comprar Bilhetes",
+        "price_per_ticket": "Preço por bilhete",
+        "total": "Total",
+        "processing": "Processando...",
+        "buy_quantity": "Comprar {{quantity}} Bilhete{{s}}",
+        "ticket_label": "bilhete{{s}}",
+        "Ticket_label": "Bilhete{{s}}",
+        "disconnect_title": "Desconectar Carteira",
+        "disconnect_desc": "Tem certeza que deseja desconectar sua carteira?",
+        "cancel": "Cancelar",
+        "confirm_disconnect": "Desconectar",
+        "preparing": "Preparando transação..."
+    }
+}

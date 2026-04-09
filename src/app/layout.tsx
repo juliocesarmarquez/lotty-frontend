@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Chakra_Petch } from 'next/font/google'
-import { LemonProvider } from '@/providers/LemonProvider'
+import { AppProviders } from '@/providers/AppProviders'
 import './globals.css'
 
 const inter = Inter({
@@ -25,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${chakraPetch.variable}`}>
-      <body className="font-body bg-cream text-text-main min-h-screen">
-        <LemonProvider>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${chakraPetch.variable}`}>
+      <body suppressHydrationWarning className="font-body bg-cream text-text-main min-h-screen">
+        <AppProviders>
           {children}
-        </LemonProvider>
+        </AppProviders>
       </body>
     </html>
   )
